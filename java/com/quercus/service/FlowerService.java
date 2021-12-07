@@ -16,4 +16,8 @@ public interface FlowerService {
     Flower findOne(int id);
     /*修改花卉的信息*/
     int change(Flower flower);
+    /*分页查询*/
+    List<Flower> findMore(int start, int size,String name,String price);
+    /*查询返回表的总条数*/
+    int findCount(String name,String price);
 }

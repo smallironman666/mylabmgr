@@ -57,4 +57,22 @@ public class FlowerServiceImpl implements FlowerService {
         sqlSession.close();
         return update;
     }
+
+    @Override
+    public List<Flower> findMore(int start, int size,String name,String price) {
+        SqlSession sqlSession = SqlsessionUtil.getSqlSession();
+        FlowerMapper mapper = sqlSession.getMapper(FlowerMapper.class);
+        List<Flower> flowers = mapper.selectMore(start, size,name,price);
+        sqlSession.close();
+        return flowers;
+    }
+
+    @Override
+    public int findCount(String name,String price) {
+        SqlSession sqlSession = SqlsessionUtil.getSqlSession();
+        FlowerMapper mapper = sqlSession.getMapper(FlowerMapper.class);
+        int count = mapper.selectCount(name,price);
+        sqlSession.close();
+        return count;
+    }
 }

@@ -12,6 +12,10 @@ public interface FlowerMapper {
     /*查询所有的花卉信息 返回值 List   参数：没有 */
     @Select("select * from flower")
     List<Flower> selectAll();
+
+//    @Select("select * from flower limit #{param1},#{param2}")
+    List<Flower> selectMore(int start,int size,String name,String price);
+
     /*添加花卉信息*/
     @Insert("insert into flower values (default,#{name},#{price},#{production})")
     int insert(Flower flower);
@@ -24,4 +28,8 @@ public interface FlowerMapper {
     /*修改花卉信息*/
     @Update("update flower set name=#{name},price=#{price},production=#{production} where id=#{id}")
     int update(Flower flower);
+
+    /*计算总记录条数*/
+//    @Select("select count(1) from flower")
+    int selectCount(String name,String price);
 }
